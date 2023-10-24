@@ -1,28 +1,16 @@
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	-webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
+img {
+  max-width: 100%;
+}
 body {
-	line-height: 1.5;
-}
-
-a {
-	color: inherit;
-	text-decoration: unset;
-}
-
-ul {
-	list-style: none;
-}
-
-img,
-picture,
-video,
-canvas,
-svg {
-	display: block;
-	max-width: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+  min-height: 100vh;
 }
