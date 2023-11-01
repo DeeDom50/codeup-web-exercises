@@ -1,0 +1,107 @@
+.jumbotron {
+    background-image: url("../img/pizza.png");
+    height: 346px;
+    background-size: cover;
+}
+.light-background {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+
+.hero {
+    height: 346px;
+    background-size: cover;
+    background-image: url("../images/pizza.png");
+    padding: unset;
+    margin-bottom: 50px;
+}
+
+
+.image-title {
+    background: white;
+    opacity: 0.70;
+    width: inherit;
+
+}
+
+h1 {
+    opacity: 1;
+    align-self: center;
+}
+
+.size-crust {
+    background-color: #0c6dfd;
+    color: white;
+}
+
+.cheese-sauce {
+    background-color: #0c6dfd;
+    color: white;
+}
+
+.toppings {
+    background-color: #0c6dfd;
+    color: white;
+}
+
+.pg-1-card-header {
+    background-color: #F7F7F7;
+}
+
+.pg-2-card-header {
+    background-color: #F7F7F7;
+}
+
+.pg-3-card-header {
+    background-color: #F7F7F7;
+}
+
+.next-step {
+    background-color: #0c6dfd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+.btn {
+    border: 2px solid #0c6dfd;
+    color: #0c6dfd;
+    background-color: #ffffff;
+}
+.pizza-nav a {
+    list-style: unset;
+    text-decoration: none;
+    color: inherit;
+}
+#pizza-world {
+    font-weight: bold;
+    font-size: 18px;
+}
+#menu {
+    opacity: .6;
+}
+
+.image {
+    position: relative;
+    height: 50%;
+    width: 25px;
+}
+.container {
+    padding: 0px 0px 20px 0px;
+}
+a {
+    text-decoration: none;
+}
+.bg-secondary {
+    color: white;
+}
+
+.nav-link-active {
+    color: white;
+}
