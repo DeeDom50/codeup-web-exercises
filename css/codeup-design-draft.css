@@ -1,0 +1,241 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css") layer(framework);
+@import url("https://fonts.googleapis.com/css2?family=Abel&family=Anton&display=swap");
+*{
+    background-color: #F0F0F0;
+}
+:root {
+    --red: #e6563b;
+    --green: #7cb06c;
+    --yellow: #EB9D3A;
+    --blue: #00aba9;
+}
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+
+}
+.custom-navbar {
+    /* Set the background color to #f0f0f0 */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    border: none; /* Remove border */
+
+    /* If you want to make the navbar fully transparent, use the following property */
+    background-color: transparent;
+}
+/* Add custom CSS for styling */
+body {
+    font-family: 'Abel', sans-serif;
+    background-color: #F0F0F0;
+}
+/* Customize other styles according to the style guide */
+.hero\.container {
+    font-family: 'Anton', sans-serif;
+}
+h1{
+    font-family: 'Anton', sans-serif;
+    font-size: 60px;
+
+}
+h3{
+    font-family: 'Anton', sans-serif;
+    font-size: 30px;
+}
+.col1 {
+    min-height: 10px;
+    min-width: 30px;
+    border: 1px solid transparent;
+}
+
+/* Apply styles to the specific navigation links */
+.nav-item-text {
+    font-family: 'Abel', sans-serif;
+    font-size: 10px;
+    margin-left: 10px;
+    color: grey;
+    /*
+    color: grey; /* Replace with the desired text color */
+}
+.card-text {
+    font-size: 13px;
+}
+h5 {
+    font-size: 14px;
+}
+
+
+/*Circle Designs*/
+.small-circles {
+    height: 18px;
+    width: 18px;
+    border-radius: 50px;
+    font-size: 13px;
+    line-height: 18px;
+    font-family: 'Anton', sans-serif;
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    border: none; /* Remove border */
+}
+
+.small-circles span {
+    position: relative;
+    top: 1px;
+}
+
+.circle h6 {
+    margin: 0;
+}
+
+.red {background-color: var(--red);}
+.blue {background-color: var(--blue);}
+.yellow {background-color: var(--yellow);}
+.green {background-color: var(--green);}
+
+
+.design-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #E6563B;
+    border: 6px solid #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+}
+.develop-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #EB9D3A;
+    border: 6px solid #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+}
+.support-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #7CB06C;
+    border: 6px solid #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+}
+.host-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #00ABA9;
+    border: 6px solid #FFFFFF;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+}
+.outer-circle {
+    width: 130px;
+    /*height: 130px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;*/
+}
+.outer-card {
+    /*width: 300px;
+    height: 300px;
+    background-color: #E6E6E6;
+    border-radius: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;*/
+    border: 2px solid #e6e6e6;
+    padding: 10px;
+    margin-top: 20px;
+}
+/* Add this CSS code to style your HTML structure */
+.small-images {
+    width: 50px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+}
+
+.small-images img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Optional: Style for "small-images-head" and "small-images-google" */
+.small-images-head,
+.small-images-google {
+    width: 50px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+}
+
+.small-images-head img,
+.small-images-google img {
+    width: 100%;
+    height: 100%;
+}
+.small-images-phone {
+    float: left;
+    margin-right: 15px;
+}
+.small-images-head {
+    float: left;
+    margin-right: 15px;
+}
+.small-images-google {
+    float: left;
+    margin-right: 15px;
+}
+
+
+.tweet p {
+    margin: 0; /* Remove default margin for the "p" elements inside the "tweet" class */
+}
+
+/* Optional: Style for the "tweet" class */
+.tweet a {
+    text-decoration: none; /* Remove underline for the links inside the "tweet" class */
+}
+
+/* Optional: Style for the "tweet" class on hover */
+.tweet a:hover {
+    text-decoration: underline; /* Add underline on hover for the links inside the "tweet" class */
+}
+.card-img-top {
+    border: 6px solid #E6E6E6;
+    width: 100%;
+    aspect-ratio: 295/197;
+    object-fit: cover;
+}
+.sm-card-img-top {
+    border: 2px solid #E6E6E6;
+    width: 100%;
+    aspect-ratio: 295/197;
+    object-fit: cover;
+}
+@media (max-width: 461px) {
+    hr {
+        display: none; /* Hide the <hr> at small screen sizes */
+    }
+}
+
+.mx-7 {
+    margin-right: 7rem!important;
+    margin-left: 7rem!important;
+}
+p.custom-paragraph {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    /* Add other styles as needed */
+}
