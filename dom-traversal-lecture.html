@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<style>
+		.page-wrapper {
+			display: flex;
+			flex-direction: column;
+			min-height: 100dvh;
+		}
+		
+		.box {
+			width: 100px;
+			height: 100px;
+			background-color: grey;
+			border-radius: 8px;
+			
+			&.active {
+				background-color: rgb(247, 0, 255);
+			}
+		}
+	</style>
+</head>
+
+<body>
+<div class="page-wrapper justify-content-center">
+	<div class="container d-flex flex-column gap-5">
+		<div class="row justify-content-center gap-3">
+			<div class="box active"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col flex-grow-0 flex-shrink-1">
+				<button id="highlightNext" class="btn btn-primary text-nowrap">Hightlight Next</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="./js/dom-traversal.js"></script>
+</body>
+​
+</html>
