@@ -20,13 +20,30 @@
 </table>
 
 <script>
-    "use strict";
-    // TODO: Create an AJAX GET request for the file under data/inventory.json
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'data/inventory.json', true);
+    
+    xhr.onreadystatechange = function() {
+	    if (xhr.readyState === 4 && xhr.status === 200) {
+		    // Take the data from inventory.json and append it to the products table
+		    const products = JSON.parse(xhr.responseText);
+		    const insertProducts = document.getElementById('insertProducts');
+		    
+		    products.forEach(product => {
+			    const row = document.createElement('tr');
+			    row.innerHTML = `
+                    <td>${product.title}</td>
+                    <td>${product.quantity}</td>
+                    <td>${product.price}</td>
+                    <td>${product.categories.join(',')}</td>
+                `;
+			    insertProducts.appendChild(row);
+		    });
+	    }
+    };
+    
+    xhr.send();
 
-    // TODO: Take the data from inventory.json and append it to the products table
-    //       HINT: Your data should come back as a JSON object; use console.log() to inspect
-    //             its contents and fields
-    //       HINT: You will want to target #insertProducts for your new HTML elements
 </script>
 
 </body>
