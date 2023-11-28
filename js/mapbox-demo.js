@@ -1,4 +1,4 @@
-import { keys } from "../../keys.js";
+import { keys } from "./keys";
 
 const getCoordinates = async (searchText) => {
 	searchText = encodeURIComponent(searchText);
