@@ -155,7 +155,7 @@ const updateForecastCards = (forecastData) => {
 		date.textContent = new Date(day.dt * 1000).toLocaleDateString('en-US', { weekday: 'short' });
 
 		const temperature = document.createElement('div');
-		temperature.textContent = `${convertCelsiusToFahrenheit(day.main?.temp || day.temp)}°F`;
+		temperature.textContent = `${convertCelsiusToFahrenheit(day.temp?.day || day.main?.temp)}°F`;
 
 		const description = document.createElement('div');
 		description.textContent = day.weather[0].description;
