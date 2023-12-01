@@ -1,18 +1,8 @@
 import { keys } from "../js/keys.js";
 const kelvinToCelsius = (kelvin) => kelvin - 273.15;
-
 const celsiusToFahrenheit = (celsius) => (celsius * 9/5) + 32;
-
 const kelvinToFahrenheit = (kelvin) => celsiusToFahrenheit(kelvinToCelsius(kelvin));
-const kelvinTemperature = 300; // Replace with the actual temperature from the API
-const fahrenheitTemperature = kelvinToFahrenheit(kelvinTemperature);
-console.log(fahrenheitTemperature.toFixed(2));
-const convertCelsiusToFahrenheit = (celsius) => {
-	if (typeof celsius !== 'number') {
-		return NaN; // Return NaN if the input is not a number
-	}
-	return (celsius * 9/5) + 32;
-};
+
 const getFiveDayForecast = async (lat, lng, city) => {
 	let url;
 	let onecall = false;
@@ -52,8 +42,14 @@ const updateWeatherInfo = async (city) => {
 
 	map.setZoom(9); // Set the zoom level on the map
 
-	const updateInfo = async (lat, lon) => {
+	const updateInfo = async (lat, lon, city) => {
 		try {
+			// Update the map location
+			map.flyTo({
+				center: [lon, lat],
+				essential: true,
+			});
+
 			const forecastData = await getFiveDayForecast(lat, lon);
 			const locationInfo = await reverseGeocode(lat, lon);
 
@@ -83,19 +79,30 @@ const updateWeatherInfo = async (city) => {
 			console.error('Error fetching data:', error);
 		}
 	});
-
-
 	// Find button event listener
 	const findButton = document.querySelector('#find-button');
 	const locationInput = document.querySelector('#location-input');
 
-	findButton.addEventListener('click', () => {
+	findButton.addEventListener('click', async () => {
 		const newCity = locationInput.value;
 
 		if (newCity) {
-			// Update the current city in the navbar
-			document.querySelector('#current-city').textContent = newCity;
-			updateInfo(newCity, null, newCity);
+			try {
+				// Get the coordinates for the new city
+				const newLocationData = await geocode(newCity);
+
+				// Update the current city in the navbar
+				document.querySelector('#current-city').textContent = newCity;
+
+				// Update the info with new coordinates
+				updateInfo(newLocationData.lat, newLocationData.lon);
+
+				// Relocate the map and marker to the new coordinates
+				map.setCenter([newLocationData.lon, newLocationData.lat]);
+				marker.setLngLat([newLocationData.lon, newLocationData.lat]);
+			} catch (error) {
+				console.error('Error getting coordinates:', error);
+			}
 		}
 	});
 
@@ -119,8 +126,13 @@ const updateNavbar = (locationInfo) => {
 	document.querySelector('#current-city').textContent = city;
 	document.querySelector('#current-state').textContent = state;
 	document.querySelector('#current-country').textContent = country;
-	document.querySelector('#current-lat').textContent = lat.toFixed(4);
-	document.querySelector('#current-lon').textContent = lon.toFixed(4);
+
+	// Check if lat and lon are valid numbers before using .toFixed(4)
+	const formattedLat = typeof lat === 'number' ? lat.toFixed(4) : 'Unknown';
+	const formattedLon = typeof lon === 'number' ? lon.toFixed(4) : 'Unknown';
+
+	document.querySelector('#current-lat').textContent = formattedLat;
+	document.querySelector('#current-lon').textContent = formattedLon;
 };
 
 // Function to reverse geocode using Mapbox API
@@ -143,7 +155,7 @@ const reverseGeocode = async (lat, lon) => {
 };
 
 // Function to update the forecast cards
-const updateForecastCards = (forecastData) => {
+	const updateForecastCards = (forecastData) => {
 	const forecastContainer = document.querySelector('#forecast-container');
 	forecastContainer.innerHTML = ''; // Clear previous content
 
@@ -152,21 +164,36 @@ const updateForecastCards = (forecastData) => {
 		card.classList.add('forecast-card');
 
 		const date = document.createElement('div');
-		date.textContent = new Date(day.dt * 1000).toLocaleDateString('en-US', { weekday: 'short' });
+		date.textContent = new Date(day.dt * 1000).toLocaleDateString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' });
+
 
 		const temperature = document.createElement('div');
-		temperature.textContent = `${convertCelsiusToFahrenheit(day.temp?.day || day.main?.temp)}°F`;
+		const tempKelvin = day.temp?.day || day.main?.temp;
+		const tempFahrenheit = kelvinToFahrenheit(tempKelvin);
+		temperature.textContent = `Temperature: ${tempFahrenheit.toFixed()}°F`;
 
 		const description = document.createElement('div');
-		description.textContent = day.weather[0].description;
+		description.textContent = `Description: ${day.weather[0].description}`;
+
+		const humidity = document.createElement('div');
+		humidity.textContent = `Humidity: ${day.humidity || 'N/A'}`;
+
+		const wind = document.createElement('div');
+		wind.textContent = `Wind: ${day.wind_speed || 'N/A'} m/s`;
+
+		const pressure = document.createElement('div');
+		pressure.textContent = `Pressure: ${day.pressure || 'N/A'} hPa`;
 
 		card.appendChild(date);
 		card.appendChild(temperature);
 		card.appendChild(description);
+		card.appendChild(humidity);
+		card.appendChild(wind);
+		card.appendChild(pressure);
 
 		forecastContainer.appendChild(card);
 	});
-};
+	};
 
 const updateInfo = async (lat, lon, city) => {
 	try {
@@ -176,6 +203,10 @@ const updateInfo = async (lat, lon, city) => {
 			lat = locationData.lat;
 			lon = locationData.lon;
 		}
+		map.flyTo({
+			center: [lon, lat],
+			essential: true,
+		});
 
 		const forecastData = await getFiveDayForecast(lat, lon);
 		const locationInfo = await reverseGeocode(lat, lon);
@@ -190,7 +221,7 @@ const updateInfo = async (lat, lon, city) => {
 	}
 };
 
-// Example function for geocoding
+//function for geocoding
 const geocode = async (city) => {
 	const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${city}.json?access_token=${keys.mapbox}`;
 	const response = await fetch(url);
