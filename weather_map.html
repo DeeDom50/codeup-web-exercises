@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Weather Map</title>
+	<link href=https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css rel="stylesheet"/>
+	<link rel="stylesheet" href="./css/weather-map.css">
+</head>
+<body>
+
+<div id="navbar">
+	<div id="app-title">Weather App</div>
+	<div>
+		<span id="current-city">San Antonio</span>,
+		<span id="current-state">TX</span>,
+		<span id="current-country">USA</span>
+		(<span id="current-lat">29.424349</span>,
+		<span id="current-lon">-98.491142</span>)
+	</div>
+</div>
+<div id="search-bar">
+	Place:
+	<input type="text" id="location-input" placeholder="City">
+	<button id="find-button">Find</button>
+</div>
+
+<div id="weather-container">
+	<!-- Current conditions will be displayed here -->
+</div>
+
+<div id="forecast-container" class="forecast-container">
+	<!-- Five-day forecast will be displayed here -->
+</div>
+
+
+<div id="map-container" class="map-container">
+	<!-- Map will be displayed here -->
+</div>
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+<script type="module" src="./js/weather-map.js"></script>
+</body>
+</html>
