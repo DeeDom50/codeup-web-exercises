@@ -155,7 +155,7 @@ const reverseGeocode = async (lat, lon) => {
 };
 
 // Function to update the forecast cards
-	const updateForecastCards = (forecastData) => {
+const updateForecastCards = (forecastData) => {
 	const forecastContainer = document.querySelector('#forecast-container');
 	forecastContainer.innerHTML = ''; // Clear previous content
 
